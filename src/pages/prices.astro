@@ -1,0 +1,57 @@
+---
+import "tabulator-tables/dist/css/tabulator_bootstrap4.min.css";
+import Layout from "../layouts/Layout.astro";
+---
+
+<script src="../scripts/prices.ts"></script>
+
+<style>
+	body,
+	html {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	html {
+		@apply bg-slate-900;
+	}
+	.container {
+		height: calc(100svh - 4rem);
+	}
+
+	.btn {
+		@apply text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700;
+	}
+	.filter-input {
+		@apply block py-2.5 px-0 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600;
+	}
+	.filter-label {
+		@apply peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6;
+	}
+</style>
+
+<!-- <style is:global>
+	.tabulator-row.tabulator-row-even {
+		background-color: rgb(30 41 59) !important;
+		@apply text-gray-100;
+	}
+
+	.tabulator-row.tabulator-row-odd {
+		background-color: rgb(15 23 42) !important;
+		@apply text-gray-100;
+	}
+</style> -->
+
+<Layout title="RTI Shipyards">
+	<div class="container dark">
+		<div class="flex h-12 my-2">
+			<div class="relative mx-2 group">
+				<input id="filter-value" class="filter-input peer" placeholder=" " />
+				<label for="filter-value" class="filter-label">Filter ships by name</label>
+			</div>
+			<button id="filter-clear" class="btn">Clear Filter</button>
+		</div>
+
+		<div id="table" class="w-screen table-dark thead-dark"></div>
+	</div>
+</Layout>
